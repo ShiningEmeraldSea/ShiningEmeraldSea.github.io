@@ -2,14 +2,15 @@
 <html>
 
  <style>
-  div {
+  #nidraloka {
    background-color: #eeedff;
    width: 300px;
    border: 9px solid #060074;
    padding: 10px;
-   margin: 10px;
+   margin: 20px;
    box-shadow: 0 0 50px 10px #fff;
    color: black;
+   float: left;
   }
   nid_title {
    font-family: Snell Roundhand, cursive;
@@ -23,6 +24,23 @@
   body {
    background-color: black;
    color: white;
+  }
+  #taroxi {
+   background-color: #ffd8d8;
+   width: 300px;
+   border: 9px solid #ff7000;
+   padding: 10px;
+   margin: 20px;
+   box-shadow: 0 0 50px 10px #fff;
+   color: black;
+   float: left;
+  }
+  tar_title {
+  font-family: Trattatello;
+  font-size: 20px;
+  {
+  tar_flavortext {
+  
   }
  </style>
 
@@ -40,7 +58,7 @@
 
  <br><br>
 
- <div>
+ <div id = "nidraloka">
   <nid_title><p>Nidraloka</p></nid_title>
   <form action="/action_page.php">
     <label for="action">Action:</label>
@@ -54,6 +72,17 @@
   <nid_flavortext>
    <p>( )</p>
   </nid_flavortext>
+ </div>
+ 
+ <div id = "taroxi">
+  <tar_title><p>Taroxi Xekanel<p></tar_title>
+  <form draws="/draws_page.php">
+   <label for="quantity">Draws:</label>
+   <br>
+   <input type="number" id="quantity" name="quantity" min="1" max="13"> 
+   <input type="submit" value="Submit">
+  </form> 
+  <p>( )</p>
  </div>
 
 </html>
