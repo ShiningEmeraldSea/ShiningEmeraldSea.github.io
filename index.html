@@ -9,17 +9,54 @@
 \f0\fs26 \cf0 <!DOCTYPE html>\
 <html>\
 \
-<html>\
-<head>\
-<title>run my python files</title>\
-<?PHP\
-echo shell_exec("python test.py 'parameter1'");\
-?>\
-</head>\
+ <style>\
+  div \{\
+   background-color: #eeedff;\
+   width: 300px;\
+   border: 9px solid #060074;\
+   padding: 10px;\
+   margin: 10px;\
+  \}\
+  nid_title \{\
+   font-family: Snell Roundhand, cursive;\
+   font-size: 20px;\
+  \}\
+  nid_flavortext \{\
+   font-family: Apple Chancery, cursive;\
+   color: blue;\
+   text-align: center\
+  \}\
+ </style>\
 \
-<body>\
-<h1>Sophie's Projects</h1>\
-<p>Probly gonna be games and little paradises, i dunno</p>\
-</body>\
+ <head>\
+  <title>run my python files</title>\
+  <?PHP\
+   echo shell_exec("python test.py 'parameter1'");\
+  ?>\
+ </head>\
 \
-</html>}
+ <body>\
+  <h1>Sophie's Projects</h1>\
+  <p>Probly gonna be games and little paradises, i dunno</p>\
+ </body>\
+\
+ <br><br>\
+\
+ <div>\
+  <nid_title><p>Nidraloka</p></nid_title>\
+  <form action="/action_page.php">\
+    <label for="action">Action:</label>\
+    <br>\
+    <input type="text" id="action" name="action">\
+    <input type="submit" value="Submit">\
+  </form> \
+  <p>(submit "help" to get a list of possible actions)</p>\
+  <p>Inventory: ( )</p>\
+  <p>Location: ( )</p>\
+  <nid_flavortext>\
+   <p>( )</p>\
+  </nid_flavortext>\
+ </div>\
+\
+</html>\
+}
