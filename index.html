@@ -12,11 +12,11 @@
    color: black;
    float: left;
   }
-  nid_title {
+  nid-title {
    font-family: Snell Roundhand, cursive;
    font-size: 20px;
   }
-  nid_flavortext {
+  nid-flavortext {
    font-family: Apple Chancery, cursive;
    color: blue;
    text-align: center
@@ -35,20 +35,14 @@
    color: black;
    float: left;
   }
-  tar_title {
+  tar-title {
   font-family: Trattatello;
   font-size: 20px;
-  {
-  tar_flavortext {
-  
   }
  </style>
 
  <head>
-  <title>run my python files</title>
-  <?PHP
-   echo shell_exec("python test.py 'parameter1'");
-  ?>
+  <title>Sophie's Projects</title>
  </head>
 
  <body>
@@ -59,12 +53,12 @@
  <br><br>
 
  <div id = "nidraloka">
-  <nid_title><p>Nidraloka</p></nid_title>
+  <nid-title><p>Nidraloka</p></nid-title>
   <form action="/action_page.php">
     <label for="action">Action:</label>
     <br>
-    <input type="text" id="action" name="action">
-    <input type="submit" value="Submit">
+    <input id="action" name="action" type="text">
+    <button>Submit</button>
   </form> 
   <p>(submit "help" to get a list of possible actions)</p>
   <p>Inventory: ( )</p>
@@ -75,12 +69,16 @@
  </div>
  
  <div id = "taroxi">
-  <tar_title><p>Taroxi Xekanel<p></tar_title>
+  <tar-title><p>Taroxi Xekanel<p></tar-title>
   <form draws="/draws_page.php">
-   <label for="quantity">Draws:</label>
+   <label for="quantity">maximum draws:</label>
+   <input id="quantity" name="quantity"type="number" min="1" max="13"> 
    <br>
-   <input type="number" id="quantity" name="quantity" min="1" max="13"> 
-   <input type="submit" value="Submit">
+   <label for="question">question:</label>
+   <br>
+   <input id="action" name="action" type="text">
+   <br>
+   <button>Submit</button>
   </form> 
   <p>( )</p>
  </div>
