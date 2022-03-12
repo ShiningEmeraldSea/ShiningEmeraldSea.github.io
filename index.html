@@ -54,41 +54,42 @@
  <br><br>
 
  <div id = "nidraloka">
-  <nid-title><p>Nidraloka</p></nid-title>
-  <form action="/action_page.php">
-    <label for="action">Action:</label>
-    <br>
-    <input id="action" name="action" type="text">
-    <button>Submit</button>
+  <nid-title><p>Nidraloka (under construction)</p></nid-title>
+  <nid-flavortext> <p>You find a key in your pocket.</p> </nid-flavortext>
+  <label for="nidAction">Action:</label>
+  <br>
+  <input id="nidAction" name="nidAction" type="text">
+  <button>Submit</button>
   </form> 
   <p>(submit "help" to get a list of possible actions)</p>
-  <p>Inventory: ( )</p>
-  <p>Location: ( )</p>
-  <nid_flavortext>
-   <p>( )</p>
-  </nid_flavortext>
+  <p>Location: cabin</p>
+  <p>Inventory: key</p>
+  <br>
+  <button>get save file</button>
+  <br>
+  <input id="nidLoadSave" name="nidLoadSave" type="text">
+  <button>load save file</button>
  </div>
  
  <div id = "taroxi">
   <tar-title><p>Taroxi Xekanel<p></tar-title>
-  <form draws="/draws_page.php">
-   <label for="question">question:</label>
-   <br>
-   <input id="action" name="action" type="text">
-   <p>maximum draws:<p>
-   <input type = "button" onclick = "taroxiXekanel(1)" value = "One">
-   <input type = "button" onclick = "taroxiXekanel(2)" value = "Two">
-   <input type = "button" onclick = "taroxiXekanel(3)" value = "Three">
-   <input type = "button" onclick = "taroxiXekanel(4)" value = "Four">
-   <input type = "button" onclick = "taroxiXekanel(5)" value = "Five">
-   <input type = "button" onclick = "taroxiXekanel(6)" value = "Six">
-   <input type = "button" onclick = "taroxiXekanel(7)" value = "Seven">
-   <input type = "button" onclick = "taroxiXekanel(8)" value = "Eight">
-   <input type = "button" onclick = "taroxiXekanel(9)" value = "Nine">
-   <input type = "button" onclick = "taroxiXekanel(10)" value = "Ten">
-   <input type = "button" onclick = "taroxiXekanel(11)" value = "Eleven">
-   <input type = "button" onclick = "taroxiXekanel(12)" value = "Twelve">
-  </form>
+
+  <label for="question">question:</label>
+  <br>
+  <input id="question" name="question" type="text">
+  <p>maximum draws:<p>
+  <input type = "button" onclick = "taroxiXekanel(1)" value = "One">
+  <input type = "button" onclick = "taroxiXekanel(2)" value = "Two">
+  <input type = "button" onclick = "taroxiXekanel(3)" value = "Three">
+  <input type = "button" onclick = "taroxiXekanel(4)" value = "Four">
+  <input type = "button" onclick = "taroxiXekanel(5)" value = "Five">
+  <input type = "button" onclick = "taroxiXekanel(6)" value = "Six">
+  <input type = "button" onclick = "taroxiXekanel(7)" value = "Seven">
+  <input type = "button" onclick = "taroxiXekanel(8)" value = "Eight">
+  <input type = "button" onclick = "taroxiXekanel(9)" value = "Nine">
+  <input type = "button" onclick = "taroxiXekanel(10)" value = "Ten">
+  <input type = "button" onclick = "taroxiXekanel(11)" value = "Eleven">
+  <input type = "button" onclick = "taroxiXekanel(12)" value = "Twelve">
  </div>
 
 </html>
