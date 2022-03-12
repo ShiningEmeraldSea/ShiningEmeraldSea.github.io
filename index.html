@@ -43,6 +43,7 @@
 
  <head>
   <title>Sophie's Projects</title>
+  <script type = "text/javascript" src="TaroxiXekanelWeb.js"></script>
  </head>
 
  <body>
@@ -71,16 +72,23 @@
  <div id = "taroxi">
   <tar-title><p>Taroxi Xekanel<p></tar-title>
   <form draws="/draws_page.php">
-   <label for="quantity">maximum draws:</label>
-   <input id="quantity" name="quantity"type="number" min="1" max="13"> 
-   <br>
    <label for="question">question:</label>
    <br>
    <input id="action" name="action" type="text">
-   <br>
-   <button>Submit</button>
-  </form> 
-  <p>( )</p>
+   <p>maximum draws:<p>
+   <input type = "button" onclick = "taroxiXekanel(1)" value = "One">
+   <input type = "button" onclick = "taroxiXekanel(2)" value = "Two">
+   <input type = "button" onclick = "taroxiXekanel(3)" value = "Three">
+   <input type = "button" onclick = "taroxiXekanel(4)" value = "Four">
+   <input type = "button" onclick = "taroxiXekanel(5)" value = "Five">
+   <input type = "button" onclick = "taroxiXekanel(6)" value = "Six">
+   <input type = "button" onclick = "taroxiXekanel(7)" value = "Seven">
+   <input type = "button" onclick = "taroxiXekanel(8)" value = "Eight">
+   <input type = "button" onclick = "taroxiXekanel(9)" value = "Nine">
+   <input type = "button" onclick = "taroxiXekanel(10)" value = "Ten">
+   <input type = "button" onclick = "taroxiXekanel(11)" value = "Eleven">
+   <input type = "button" onclick = "taroxiXekanel(12)" value = "Twelve">
+  </form>
  </div>
 
 </html>
