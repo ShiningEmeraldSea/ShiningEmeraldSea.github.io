@@ -55,7 +55,7 @@
  <br><br>
 
  <div id = "nidraloka">
-  <nid-title><p>Nidraloka (under construction)</p></nid-title>
+  <nid-title><p>Nidraloka</p></nid-title>
   <div id=nidFlavorText> <p>( )</p> </div>
   <label for="nidAction">Action:</label>
   <br>
@@ -63,13 +63,14 @@
   <input type="button" value="Submit" id="nidSubmitButton" onclick="nidAction()">
   </form> 
   <p>(Submit "wake up to a new world" to begin. Submit "help" to get a list of possible actions.)</p>
-  <p>Location: ( )</p>
-  <p>Inventory: ( )</p>
+  <div id="nidScreenLocation">Location: ( )</div>
   <br>
-  <button>get save file</button>
+  <div id="nidScreenInventory">Inventory: ( )</div>
+  <br>
+  <input type = "button" onclick = "nidSaveExport()" value = "get save file">
   <br>
   <input id="nidLoadSave" name="nidLoadSave" type="text">
-  <button>load save file</button>
+  <input type = "button" onclick = "nidSaveImport()" value = "load save file">
  </div>
  
  <div id = "taroxi">
