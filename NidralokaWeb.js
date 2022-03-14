@@ -24,12 +24,12 @@ const locationsNames = [
 const locationsFlavor = [
     "The river here is wide and loud, an unstoppable flowing. The shore is a transition from grass to rock and silt. The water is cold, but is it safe to drink? Inland is some fenced-in farmland [north], and a desire-path meanders to a water-mill in the distance [east].",//0
     "A more trustworthy construction than the cabin, yet older-looking, a massive wheel meshes with the force of the river. Within, two large stones grind dust into dust. The millstones are dark, sparkling with unnatural color. Supports clogged with algae, a wooden footbridge leads to a river island [east]. Facing the front door is a path of dark flagstones [south].",//1
-    "A grassy island in the midst of a wide river. The island is dominated by a single gnarled tree, roots bulging up from the earth. On the branches, fruit grows. One wooded bridge leads across the water to a weed-choked field [south], the other to a water-mill [west]",//2
+    "A grassy island in the midst of a wide river. The island is dominated by a single gnarled tree, roots bulging up from the earth. On the branches, fruit grows. One wooden bridge leads across the water to a weed-choked field [south], the other to a water-mill [west]",//2
     "Enclosed by wicker fencing, the dry soil shows signs of neglect, such as patches of crabgrass, and an anthill. Still, it looks fertile enough. A shed of similar construction to the cabin leans drunkardly. A dark-paved path [east] and a light blue path [south] lead elsewhere. You can hear the sound of running water [north].",//3
     "The northward path is marked by dark flagstones, sparkling under dust and stray soil. Going straight [north] leads to a watermill, while to the left [west] is a sizable plot of land. To the right [east] is a grassy field, pale green and interspersed with weeds. In the distance is a cabin [south].",//4
     "Weeds have made themselves at home here, neighbors to the tough grasses. Brambles warn with their thorns, others say farewell with a gift of burrs. Two paths arc across this area, one dark [west] and one red [south]. A footbridge of old and green-splotched wood leads over the river's edge, to an island in its midst [north].",//5
     "West is for ending. The obsidian black gate is locked. A blue path leads back down, back down to the world [east].",//6
-    "The westward path leads uphill, sandy soil kept in place by light blue steps, the paint has a damp glisten. The path forks and re-converges around a font of deep blue liquid, continuing to a gate [west]. Away on one side is the wattle fencing of a plot of land [north], on the other a soft and verdant green [south]. In the distance is a cabin [east].",//7
+    "The westward path leads uphill, sandy soil kept in place by navy blue steps, the paint has a damp glisten. The path forks and re-converges around a font of brilliant blue liquid, continuing to a gate [west]. Away on one side is the wattle fencing of a plot of land [north], on the other a soft and verdant green [south]. In the distance is a cabin [east].",//7
     "The starless and moonless sky is visible through the gaps in the rickety cabin's walls and roof. In one corner is a simple bed and bedside table, in the other a wooden chest. Four paths wander into the distance [north] [south] [east] [west].",//8
     "The eastward path is well-trodden, sparse grass giving way to rich terracotta earth. The path forks and reconverges around a well of red liquid, continuing to a gate [east]. On either side are unkempt fields: one drowned and muddy, [south] and one overtaken by stocky weeds [north]. In the distance is a cabin [west].",//9
     "East is for beginning. The auburn rust-scaled gate is locked. An earth-red path leads back, back to your home [west].",//10
@@ -61,50 +61,73 @@ const locationsCoords = [
     "0,-2",//14
 ];
 
+const locationsInventories = [ //actual inventories are in localstorage
+    "riverShoreInventory",//0
+    "watermillInventory",//1
+    "gnarledTreeInventory",//2
+    "farmPlotInventory",//3
+    "northwardPathInventory",//4
+    "northeasternGrassesInventory",//5
+    "westernGateInventory",//6
+    "westwardPathInventory",//7
+    "cabinInventory",//8
+    "eastwardPathInventory",//9
+    "easternGateInventory",//10
+    "southwesternGrassesInventory",//11
+    "southwardPathInventory",//12
+    "southeasternGrassesInventory",//13
+    "altarInventory",//14
+];
+
 ///the realm of the forms
 
 const platonicItems = [
-    "candle", //0
-    "medallion", //1
-    "knife", //2
-    "hoe", //3
-    "rake", //4
-    "trowel", //5
-    "scythe", //6
-    "watering can", //7
-    "shovel", //8
-    "bag of small seeds", //9
-    "bag of large seeds", //10
-    "bag of elongated seeds", //11
-    "pale bulb", //12
-    "hard pod", //13
-    "jewel", //14
-    "key", //15
-    "coin pouch", //16
-    "fruit", //17
-    "black fruit", //18
-    "red fruit", //19
-    "golden fruit", //20
-    "red liquid", //21
-    "blue liquid", //22
-    "purple liquid", //23
-    "medallion charge", //24
-    "hay", //25
-    "wildflowers", //26
-    "mushrooms", //27
-    "greenish berries", //28
-    "lavender rose", //29
-    "serrated leaf", //30
-    "unserrated leaf", //31
-    "splotchy tuber", //32
-    "mandrakes' heart", //33
-    "fibrous roots", //34
-    "raven feather", //35
-    "(human?) bone", //36
-    "(human?) skull", //37
-    "broken boat" //38
+    " candle", //0
+    " medallion", //1
+    " knife", //2
+    " hoe", //3
+    " rake", //4
+    " trowel", //5
+    " scythe", //6
+    " watering can", //7
+    " shovel", //8
+    " bag of small seeds", //9
+    " bag of large seeds", //10
+    " bag of elongated seeds", //11
+    " pale bulb", //12
+    " hard pod", //13
+    " jewel", //14
+    " key", //15
+    " coin pouch", //16
+    " fruit", //17
+    " black fruit", //18
+    " red fruit", //19
+    " golden fruit", //20
+    " red liquid", //21
+    " blue liquid", //22
+    " purple liquid", //23
+    " medallion charge", //24
+    " hay", //25
+    " wildflowers", //26
+    " mushrooms", //27
+    " greenish berries", //28
+    " lavender rose", //29
+    " curled thorns", //30
+    " serrated leaves", //31
+    " splotchy tuber", //32
+    " mandrake heart", //33
+    " fibrous roots", //34
+    " raven feather", //35
+    " bone", //36
+    " skull", //37
+    " broken boat", //38
+    " dark stone", //39
+    " white stone", //40
+    " cauldron", //41
+    " rain gauge", //42
+    " book" //43
 ];
-const ItemFlavors = [
+const itemFlavors = [
     "It looks like it could burn for a while.", //0
     "It looks very old. There's a slot in the center.", //1
     "You could cut yourself with this, if you're not careful. There's a symbol stamped on the blade.", //2
@@ -135,7 +158,7 @@ const ItemFlavors = [
     "Brown, red, pale, the poisonous and the savory.", //27
     "Smooth skin and a rough stem.", //28
     "The petals overlap like people in each others' lives.", //29
-    "The veins lace like an old man's hand.", //30
+    "Silvery grey, it curls like an animal's horn.", //30
     "The edge looks sharp.", //31
     "Rough to the touch, are these blotches normal?", //32
     "Blood-red, the smooth skin of the root is contorted in radial wrinkles.", //33
@@ -143,7 +166,12 @@ const ItemFlavors = [
     "The length of a finger, it's a soft black.", //35
     "It must have been here a long time.", //36
     "It must have been here a long time. Something lies beyond the darkness of the eyes.", //37
-    "Made of deep auburn wood. What destroyed it so completely? Its silver lantern is empty.",
+    "Deep auburn wood, shattered and splintered. Its silver lantern is empty.", //38
+    "It sparkles with unnatural color.", //39
+    "It shines like the moon through fog.", //40
+    "Rough cast iron, but just small enough to carry.", //41
+    "A long glass tube painted with grades. You don't recognize the script.",//42
+    "Bound in old leather, its many pages have diagrams and text in an unknown script.",//43
 ];
 
 ////functions
@@ -154,16 +182,36 @@ const ItemFlavors = [
 function nidAction() {
     var event = document.getElementById("nidAction").value;
     const nidFlavorText = document.getElementById("nidFlavorText");
+    var currentLocationNumber = locationsCoords.indexOf(readBrowser("playerCoords"))
+    var currentLocationInventory = locationsInventories[currentLocationNumber]
+    var currentLocationItems = readBrowser(currentLocationInventory)
+    var playerInventory = readBrowser("playerInventory")
     if (event.includes("wake up to a new world")) {
         nidSetUp()
         nidScreenUpdate()
         nidFlavorText.textContent = "You wake up. This world is cold and dark, but beautiful. There's a key in your pocket.";
     }
     if (event.includes("help")) {
-        nidFlavorText.textContent = "help; wake up to a new world; go CARDINAL DIRECTION";
+        nidFlavorText.textContent = "help; wake up to a new world; go CARDINAL DIRECTION; search area; pick up ITEM";
     }
-    if (event.includes("go"))
+    if (event.includes("go")) {
         nidGo(event.replace("go ",""));
+    }
+    if (event.includes("search area")) {
+        nidFlavorText.textContent = "There is:" + currentLocationItems;
+    }
+    if (event.includes("pick up")) {
+        var item = event.replace("pick up","");
+        if (currentLocationItems.includes(item)) {
+            storeBrowser(currentLocationInventory,arrayRemove(currentLocationItems,item));
+            playerInventory.push(item);
+            storeBrowser("playerInventory",playerInventory);
+            nidScreenUpdate();
+            nidFlavorText.textContent = "You picked up the"+item+". "+itemFlavors[platonicItems.indexOf(item)];
+        } else {
+            nidFlavorText.textContent = "There's nothing of that sort to pick up."
+        }
+    }
 }
 
 //function handling movement
@@ -195,25 +243,24 @@ function nidGo(direction) {
 }
 //a function to bring client data to the proper blank slate
 function nidSetUp() {
-    storeBrowser("playerInventory",["key"])
-        storeBrowser("playerCoords","0,0")
-        storeBrowser("locationsInventory",[
-            ["hard pod"], //0,
-            [], //1,
-            [], //2,
-            ["hoe","trowel","watering can","bag of small seeds","bag of large seeds","bag of elongated seeds","pale bulb"], //3,
-            ["rake","shovel","scythe"], //4,
-            [], //5,
-            [], //6,
-            ["candle","medallion","knife","coin pouch"], //7,
-            [], //8,
-            [], //9,
-            [], //10,
-            [], //11,
-            [], //12,
-            [], //13,
-            [], //14,
-        ])
+    storeBrowser("playerInventory",[" key"])
+    storeBrowser("playerCoords","0,0")
+    //localstorage location inventories
+    storeBrowser("riverShoreInventory",[" broken boat"]) //0
+    storeBrowser("watermillInventory",[" hard pod"," cauldron"]) //1
+    storeBrowser("gnarledTreeInventory",["book"]) //2
+    storeBrowser("farmPlotInventory",[" hoe"," trowel"," watering can"," small seeds"," large seeds"," elongated seeds"," pale bulb"," rain gauge"]) //3
+    storeBrowser("northwardPathInventory",[]) //4
+    storeBrowser("northeasternGrassesInventory",[" rake"," shovel"," scythe"]) //5
+    storeBrowser("westernGateInventory",[]) //6
+    storeBrowser("westwardPathInventory",[]) //7
+    storeBrowser("cabinInventory",[" candle"," medallion"," knife"," coin pouch",]) //8
+    storeBrowser("eastwardPathInventory",[]) //9
+    storeBrowser("easternGateInventory",[]) //10
+    storeBrowser("southwesternGrassesInventory",[]) //11
+    storeBrowser("southwardPathInventory",[]) //12
+    storeBrowser("southeasternGrassesInventory",[]) //13
+    storeBrowser("altarInventory",[" jewel"]) //14
 }
 
 ///misc functions
@@ -225,6 +272,13 @@ function storeBrowser(key,value) {
 }
 function readBrowser(key) {
     return JSON.parse(localStorage.getItem(key))
+}
+
+//makes dealing with arrays easier.
+function arrayRemove(array, value) { 
+    return array.filter(function(ele){ 
+        return ele != value; 
+    });
 }
 
 //updates player location and inventory
