@@ -125,7 +125,9 @@ const platonicItems = [
     " white stone", //40
     " cauldron", //41
     " rain gauge", //42
-    " book" //43
+    " book", //43
+    " sticks", //44
+    " psilocybe azurescens" //45
 ];
 const itemFlavors = [
     "It looks like it could burn for a while.", //0
@@ -171,7 +173,9 @@ const itemFlavors = [
     "It shines like the moon through fog.", //40
     "Rough cast iron, but just small enough to carry.", //41
     "A long glass tube painted with grades. You don't recognize the script.",//42
-    "Bound in old leather, its many pages have diagrams and text in an unknown script.",//43
+    "Bound in old leather, its pages have diagrams and text in an unknown language.",//43
+    "More kindling than firewood, the green and the dry.", //44
+    "An unassuming thing, small and brown.",//45
 ];
 
 ////functions
@@ -190,16 +194,16 @@ function nidAction() {
         nidSetUp()
         nidScreenUpdate()
         nidFlavorText.textContent = "You wake up. This world is cold and dark, but beautiful. There's a key in your pocket.";
-    }
+    } else
     if (event.includes("help")) {
-        nidFlavorText.textContent = "help; wake up to a new world; go CARDINAL DIRECTION; search area; pick up ITEM";
-    }
+        nidFlavorText.textContent = "help; wake up to a new world; go CARDINAL DIRECTION; search area; pick up ITEM; set down ITEM; use ITEM (or use ITEM, ITEM etc.);";
+    } else
     if (event.includes("go")) {
         nidGo(event.replace("go ",""));
-    }
+    } else
     if (event.includes("search area")) {
         nidFlavorText.textContent = "There is:" + currentLocationItems;
-    }
+    } else
     if (event.includes("pick up")) {
         let item = event.replace("pick up","");
         if (currentLocationItems.includes(item)) {
@@ -211,7 +215,7 @@ function nidAction() {
         } else {
             nidFlavorText.textContent = "There's nothing of that sort to pick up."
         }
-    }
+    } else
     if (event.includes("set down")) {
         let item = event.replace("set down","");
         if (playerInventory.includes(item)) {
@@ -221,8 +225,13 @@ function nidAction() {
             nidScreenUpdate()
             nidFlavorText.textContent = "You set down the"+item+". "+itemFlavors[platonicItems.indexOf(item)];
         } else {
-            nidFlavorText.textContent = "You have nothing of that sort to set down."
+            nidFlavorText.textContent = "You have nothing of that sort to set down.";
         }
+    } else
+    if (event.includes("use")) {
+        nidUse(event.replace("use",""))
+    } else {
+        nidFlavorText.textContent = "What? Submit 'help' for a list of possible actions."
     }
 }
 
@@ -253,11 +262,55 @@ function nidGo(direction) {
         nidFlavorText.textContent = "The way is blocked."
     }
 }
+
+function nidUse(items) {
+    var playerInventory = readBrowser("playerInventory")
+    var itemsArray = items.split(",");
+    itemsArray.sort();
+    var a = 0;
+    var hasItems = true;
+    while (a < itemsArray.length) {
+        if (playerInventory.includes(itemsArray[a])) {
+            a = a + 1;
+        } else {
+            hasItems = false;
+            break;
+        }
+    }
+    alert(hasItems)
+    if (hasItems = true) {
+        switch(itemsArray.toString()) {
+            case " candle":
+                nidUseCandle();
+                break;
+            default:
+                nidFlavorText.textContent = "Nothing happens. Typo?";
+                break;
+            }
+    } else {
+        nidFlavorText.textContent = "You don't appear to have all of those.";
+    }
+}
+
+///nidUse functions
+// for candle, it's a little toggle
+function nidUseCandle() {
+    var candleLit = readBrowser("candleLit");
+    if (candleLit) {
+        storeBrowser("candleLit",false);
+        nidFlavorText.textContent = "You put out the candle. Smoke trails from the wick as your surroundings darken.";
+    } else {
+        storeBrowser("candleLit",true);
+        nidFlavorText.textContent = "You light the candle. It's a warm little star under a moonless, starless sky."
+    }
+}
+
 //a function to bring client data to the proper blank slate
 function nidSetUp() {
+    //localStorage player info
     storeBrowser("playerInventory",[" key"])
     storeBrowser("playerCoords","0,0")
-    //localstorage location inventories
+    //localStorage location inventories
     storeBrowser("riverShoreInventory",[" broken boat"]) //0
     storeBrowser("watermillInventory",[" hard pod"," cauldron"]) //1
     storeBrowser("gnarledTreeInventory",[" book"]) //2
@@ -273,6 +326,8 @@ function nidSetUp() {
     storeBrowser("southwardPathInventory",[]) //12
     storeBrowser("southeasternGrassesInventory",[]) //13
     storeBrowser("altarInventory",[" jewel"]) //14
+    //localStorage item info
+    storeBrowser("candleLit",false)
 }
 
 ///misc functions
