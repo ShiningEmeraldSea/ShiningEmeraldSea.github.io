@@ -201,7 +201,7 @@ function nidAction() {
         nidFlavorText.textContent = "There is:" + currentLocationItems;
     }
     if (event.includes("pick up")) {
-        var item = event.replace("pick up","");
+        let item = event.replace("pick up","");
         if (currentLocationItems.includes(item)) {
             storeBrowser(currentLocationInventory,arrayRemove(currentLocationItems,item));
             playerInventory.push(item);
@@ -210,6 +210,18 @@ function nidAction() {
             nidFlavorText.textContent = "You picked up the"+item+". "+itemFlavors[platonicItems.indexOf(item)];
         } else {
             nidFlavorText.textContent = "There's nothing of that sort to pick up."
+        }
+    }
+    if (event.includes("set down")) {
+        let item = event.replace("set down","");
+        if (playerInventory.includes(item)) {
+            storeBrowser("playerInventory",arrayRemove(playerInventory,item))
+            currentLocationItems.push(item);
+            storeBrowser(currentLocationInventory,currentLocationItems)
+            nidScreenUpdate()
+            nidFlavorText.textContent = "You set down the"+item+". "+itemFlavors[platonicItems.indexOf(item)];
+        } else {
+            nidFlavorText.textContent = "You have nothing of that sort to set down."
         }
     }
 }
@@ -248,7 +260,7 @@ function nidSetUp() {
     //localstorage location inventories
     storeBrowser("riverShoreInventory",[" broken boat"]) //0
     storeBrowser("watermillInventory",[" hard pod"," cauldron"]) //1
-    storeBrowser("gnarledTreeInventory",["book"]) //2
+    storeBrowser("gnarledTreeInventory",[" book"]) //2
     storeBrowser("farmPlotInventory",[" hoe"," trowel"," watering can"," small seeds"," large seeds"," elongated seeds"," pale bulb"," rain gauge"]) //3
     storeBrowser("northwardPathInventory",[]) //4
     storeBrowser("northeasternGrassesInventory",[" rake"," shovel"," scythe"]) //5
