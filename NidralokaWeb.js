@@ -127,7 +127,7 @@ const platonicItems = [
     " rain gauge", //42
     " book", //43
     " sticks", //44
-    " psilocybe azurescens" //45
+    " psilocybin mushroom" //45
 ];
 const itemFlavors = [
     "It looks like it could burn for a while.", //0
@@ -357,9 +357,15 @@ function nidScreenUpdate() {
 }
 //loading and giving a save file respectively (not yet a priority)
 function nidSaveImport() {
-    var receivedsaveFile = document.getElementById("nidLoadSave").value;
-    alert("no code here yet!")
+    var receivedSaveFile = JSON.parse(document.getElementById("nidLoadSave").value);
+    Object.keys(receivedSaveFile).forEach(function (k) {
+        localStorage.setItem(k, receivedSaveFile[k]);
+    });
+    nidScreenUpdate()
+    nidFlavorText.textContent = "You wake up to an old world."
+
 }
 function nidSaveExport() {
-    alert("no code here yet!")
+    var saveFileOutput = document.getElementById("saveFileOutput");
+    saveFileOutput.textContent = JSON.stringify(localStorage)
 }
