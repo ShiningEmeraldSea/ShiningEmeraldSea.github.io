@@ -2,25 +2,6 @@
 <html>
 
  <style>
-  #nidraloka {
-   background-color: #eeedff;
-   width: 300px;
-   border: 9px solid #060074;
-   padding: 10px;
-   margin: 20px;
-   box-shadow: 0 0 50px 10px #fff;
-   color: black;
-   float: left;
-  }
-  nid-title {
-   font-family: Snell Roundhand, cursive;
-   font-size: 20px;
-  }
-  #nidFlavorText {
-   font-family: Apple Chancery, cursive;
-   color: blue;
-   text-align: center
-  }
   body {
    background-color: black;
    color: white;
@@ -44,37 +25,16 @@
  <head>
   <title>Sophie's Projects</title>
   <script type = "text/javascript" src="TaroxiXekanelWeb.js"></script>
-  <script type = "text/javascript" src="NidralokaWeb.js"></script>
  </head>
 
  <body>
   <h1>Sophie's Projects</h1>
-  <p>Probly gonna be games and little paradises, i dunno</p>
+  <p>Larger projects: <a href="https://shiningemeraldsea.itch.io/">itch.io</a>  </p>
+  <br>
+  <p>The little things it's not worth it to make an entire project out of:</p>
  </body>
+ <br>
 
- <br><br>
-
- <div id = "nidraloka">
-  <nid-title><p>Nidraloka</p></nid-title>
-  <div id=nidFlavorText> <p>( )</p> </div>
-  <label for="nidAction">Action:</label>
-  <br>
-  <input id="nidAction" name="nidAction" type="text">
-  <input type="button" value="Submit" id="nidSubmitButton" onclick="nidAction()">
-  </form> 
-  <p>(Submit "wake up to a new world" to begin. Submit "help" to get a list of possible actions.)</p>
-  <div id="nidScreenLocation">Location: ( )</div>
-  <br>
-  <div id="nidScreenInventory">Inventory: ( )</div>
-  <br>
-  <br>
-  <input type = "button" onclick = "nidSaveExport()" value = "show save file">
-  <div id="saveFileOutput"> <p></p> </div>
-  <input id="nidLoadSave" name="nidLoadSave" type="text">
-  <input type = "button" onclick = "nidSaveImport()" value = "load save file">
-
- </div>
- 
  <div id = "taroxi">
   <tar-title><p>Taroxi Xekanel<p></tar-title>
 
