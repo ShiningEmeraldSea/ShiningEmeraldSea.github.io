@@ -91,9 +91,9 @@ const platonicItems = [
     " scythe", //6
     " watering can", //7
     " shovel", //8
-    " bag of small seeds", //9
-    " bag of large seeds", //10
-    " bag of elongated seeds", //11
+    " small seeds", //9
+    " large seeds", //10
+    " elongated seeds", //11
     " pale bulb", //12
     " hard pod", //13
     " jewel", //14
@@ -109,7 +109,7 @@ const platonicItems = [
     " medallion charge", //24
     " hay", //25
     " wildflowers", //26
-    " mushrooms", //27
+    " common mushrooms", //27
     " greenish berries", //28
     " lavender rose", //29
     " curled thorns", //30
@@ -127,7 +127,11 @@ const platonicItems = [
     " rain gauge", //42
     " book", //43
     " sticks", //44
-    " psilocybin mushroom" //45
+    " psilocybin mushroom", //45
+    " morels", //46
+    " tinderbox", //47
+    " seed oil", //48
+
 ];
 const itemFlavors = [
     "It looks like it could burn for a while.", //0
@@ -160,7 +164,7 @@ const itemFlavors = [
     "Brown, red, pale, the poisonous and the savory.", //27
     "Smooth skin and a rough stem.", //28
     "The petals overlap like people in each others' lives.", //29
-    "Silvery grey, it curls like an animal's horn.", //30
+    "Silvery grey, it spirals like an animal's horn.", //30
     "The edge looks sharp.", //31
     "Rough to the touch, are these blotches normal?", //32
     "Blood-red, the smooth skin of the root is contorted in radial wrinkles.", //33
@@ -176,6 +180,9 @@ const itemFlavors = [
     "Bound in old leather, its pages have diagrams and text in an unknown language.",//43
     "More kindling than firewood, the green and the dry.", //44
     "An unassuming thing, small and brown.",//45
+    "While some mushrooms kill, these nourish.", //46
+    "Don't get carried away.", //47
+    "A warm amber salve.", //48
 ];
 
 ////functions
@@ -185,6 +192,7 @@ const itemFlavors = [
 //input affects world, affects output text
 function nidAction() {
     var event = document.getElementById("nidAction").value;
+    alert(event)
     const nidFlavorText = document.getElementById("nidFlavorText");
     var currentLocationNumber = locationsCoords.indexOf(readBrowser("playerCoords"))
     var currentLocationInventory = locationsInventories[currentLocationNumber]
@@ -196,7 +204,7 @@ function nidAction() {
         nidFlavorText.textContent = "You wake up. This world is cold and dark, but beautiful. There's a key in your pocket.";
     } else
     if (event.includes("help")) {
-        nidFlavorText.textContent = "help; wake up to a new world; go CARDINAL DIRECTION; search area; pick up ITEM; set down ITEM; use ITEM (or use ITEM, ITEM etc.);";
+        nidFlavorText.textContent = "help; wake up to a new world; go CARDINAL DIRECTION; search area; pick up ITEM; set down ITEM; use ITEM (or use ITEM, ITEM etc.); gather;";
     } else
     if (event.includes("go")) {
         nidGo(event.replace("go ",""));
@@ -257,7 +265,7 @@ function nidGo(direction) {
     if (locationsCoords.includes(testPlayerCoordsString)) {
         storeBrowser("playerCoords",testPlayerCoordsString)
         nidScreenUpdate()
-        nidFlavorText.textContent = locationsFlavor[locationsCoords.indexOf(testPlayerCoordsString)]
+        nidFlavorText.textContent = stringPossiblity(21,"You catch sight of a three-eyed cat, before it flits out of view.") + locationsFlavor[locationsCoords.indexOf(testPlayerCoordsString)]
     } else {
         nidFlavorText.textContent = "The way is blocked."
     }
@@ -314,7 +322,7 @@ function nidSetUp() {
     storeBrowser("riverShoreInventory",[" broken boat"]) //0
     storeBrowser("watermillInventory",[" hard pod"," cauldron"]) //1
     storeBrowser("gnarledTreeInventory",[" book"]) //2
-    storeBrowser("farmPlotInventory",[" hoe"," trowel"," watering can"," small seeds"," large seeds"," elongated seeds"," pale bulb"," rain gauge"]) //3
+    storeBrowser("farmPlotInventory",[" hoe"," trowel"," watering can"," small seeds"," large seeds"," elongated seeds"," pale bulb"," splotchy tuber"," rain gauge"]) //3
     storeBrowser("northwardPathInventory",[]) //4
     storeBrowser("northeasternGrassesInventory",[" rake"," shovel"," scythe"]) //5
     storeBrowser("westernGateInventory",[]) //6
@@ -330,6 +338,15 @@ function nidSetUp() {
     storeBrowser("candleLit",false)
 }
 
+function stringPossiblity(rarity,success) {
+    switch (getRandomInt(0,rarity)) {
+        case 0:
+            return success;
+        default:
+            return ""
+    }
+}
+
 ///misc functions
 
 //functions to store (arrays) in localStorage, and to read them, respectively.
@@ -341,12 +358,17 @@ function readBrowser(key) {
     return JSON.parse(localStorage.getItem(key))
 }
 
-//makes dealing with arrays easier.
+//makes dealing with arrays easier, and generates random integers, respectively.
 function arrayRemove(array, value) { 
     return array.filter(function(ele){ 
         return ele != value; 
     });
 }
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+}  
 
 //updates player location and inventory
 function nidScreenUpdate() {
@@ -355,6 +377,7 @@ function nidScreenUpdate() {
     nidScreenLocation.textContent = ("Location: " + locationsNames[locationsCoords.indexOf(playerCoords)]);
     nidScreenInventory.textContent = ("Inventory: " + playerInventory);
 }
+
 //loading and giving a save file respectively (not yet a priority)
 function nidSaveImport() {
     var receivedSaveFile = JSON.parse(document.getElementById("nidLoadSave").value);
