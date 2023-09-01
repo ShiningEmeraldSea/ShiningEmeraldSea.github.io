@@ -41,13 +41,12 @@
 
  <head>
   <title>Alconvin's Widgets</title>
-  <script type = "text/javascript" src="cosmicOvertones.js"></script>
  </head>
 
  <body>
   <h1>Alconvin's Widgets</h1>
   <br>
-  <p>Attempting combination of tech (cathartic magic), satan-worship (ascetic magic), rosicrucian christianity (majestic magic), and art (fervent magic). (no back-end yet)</p>
+  <p>Attempting combination of tech (cathartic magic), satan-worship (ascetic magic), rosicrucian christianity (majestic magic), and surrealism (fervent magic). (no back-end yet)</p>
  </body>
  <br>
 
@@ -60,10 +59,83 @@
   <label for="question">Overtone Tablature Input</label>
   <br>
   <input id="question" name="question" type="text">
-  <p>Overtone harpsichord keys: 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, -, =, delete. Overtone tabl works like this: 0h2-1h3-2h4 indicates playing the first harmonic after 0 seconds, playing the third harmonic after one second from start, then playing the fourth harmonic after 2 seconds from start. <p>
+  <p>Overtone harpsichord keys: 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, -, =, delete.<p>
   <br>
-  <input type = "button" onclick = "record()" value = "record overtone tabl">
-  <input type = "button" onclick = "readout()" value = "display recorded overtone tabl">
+
+  <audio id="h1" src="h1.wav"></audio>
+  <audio id="h2" src="h2.wav"></audio>
+  <audio id="h3" src="h3.wav"></audio>
+  <audio id="h4" src="h4.wav"></audio>
+  <audio id="h5" src="h5.wav"></audio>
+  <audio id="h6" src="h6.wav"></audio>
+  <audio id="h7" src="h7.wav"></audio>
+  <audio id="h8" src="h8.wav"></audio>
+  <audio id="h9" src="h9.wav"></audio>
+  <audio id="h10" src="h10.wav"></audio>
+  <audio id="h11" src="h11.wav"></audio>
+  <audio id="h12" src="h12.wav"></audio>
+  <audio id="h13" src="h13.wav"></audio>
+  <!-- Add more audio elements for audio2.mp3, audio3.mp3, and so on... -->
+
+  <script>
+      // Function to play audio for each key
+      function playAudio(audioElement) {
+          var audio = new Audio(audioElement.src);
+          audio.play();
+      }
+
+      // Add an event listener to the document
+      document.addEventListener("keydown", function (event) {
+          switch (event.key) {
+              case "1":
+                  playAudio(document.getElementById("h1"));
+                  break;
+              case "2":
+                  playAudio(document.getElementById("h2"));
+                  break;
+              case "3":
+                  playAudio(document.getElementById("h3"));
+                  break;
+              case "4":
+                  playAudio(document.getElementById("h4"));
+                  break;
+              case "5":
+                  playAudio(document.getElementById("h5"));
+                  break;
+              case "6":
+                  playAudio(document.getElementById("h6"));
+                  break;
+              case "7":
+                  playAudio(document.getElementById("h7"));
+                  break;
+              case "8":
+                  playAudio(document.getElementById("h8"));
+                  break;
+              case "8":
+                  playAudio(document.getElementById("h9"));
+                  break;
+              case "9":
+                  playAudio(document.getElementById("h10"));
+                  break;
+              case "0":
+                  playAudio(document.getElementById("h10"));
+                  break;
+              case "-":
+                  playAudio(document.getElementById("h11")); // Play audio2 for -
+                  break;
+              case "=":
+                  playAudio(document.getElementById("h12")); // Play audio2 for -
+                  break;
+              case "Backspace":
+                  playAudio(document.getElementById("h13")); // Play audio1 for Backspace
+                  event.preventDefault();
+                  break;
+              default:
+                  break;
+          }
+      });
+  </script>
+
  </div>
 
  <div id = taroxi>
