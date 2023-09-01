@@ -4,56 +4,76 @@
  <style>
   body {
    background-color: black;
-   color: white;
+   color: rgb(174, 221, 255);
+   background-image: url(cosmicBackground.png);
   }
-  #taroxi {
-   background-color: #ffd8d8;
-   width: 300px;
-   border: 9px solid #ff7000;
+  #overtones {
+   background-color: #0000ff4f;
+   width: 600px;
+   border: 9px solid #9494ff;
    padding: 10px;
    margin: 20px;
    box-shadow: 0 0 50px 10px #fff;
-   color: black;
+   color: rgb(174, 221, 255);
    float: left;
   }
-  tar-title {
-  font-family: Trattatello;
+  ov-title {
+  font-family: Luminari;
   font-size: 20px;
   }
+
+ #taroxi {
+   background-color: #ff00004f;
+   width: 300px;
+   border: 9px solid #ff9494;
+   padding: 10px;
+   margin: 20px;
+   box-shadow: 0 0 50px 10px #fff;
+   color: rgb(175, 0, 0);
+   float: left;
+ }
+  xek-title {
+    font-family: Trattatello;
+    font-size: 20px;
+  }
+
  </style>
 
  <head>
-  <title>Sophie's Projects</title>
-  <script type = "text/javascript" src="TaroxiXekanelWeb.js"></script>
+  <title>Alconvin's Widgets</title>
+  <script type = "text/javascript" src="cosmicOvertones.js"></script>
  </head>
 
  <body>
-  <h1>Sophie's Projects</h1>
-  <p>Larger projects: <a href="https://shiningemeraldsea.itch.io/">itch.io</a>  </p>
+  <h1>Alconvin's Widgets</h1>
   <br>
-  <p>The little things it's not worth it to make an entire project out of:</p>
+  <p>Attempting cross-pollination of tech and witchcraft. (no functionality yet)</p>
  </body>
  <br>
 
- <div id = "taroxi">
-  <tar-title><p>Taroxi Xekanel<p></tar-title>
-
-  <label for="question">question:</label>
+ <div id = "overtones">
+  <ov-title><p>Cosmic Overtones<p></ov-title>
+    <label class="switch">
+        <input type="checkbox">
+      </label>
+  <p>(check box to start, uncheck to end)</p>
+  <label for="question">Overtone Tablature Input</label>
   <br>
   <input id="question" name="question" type="text">
-  <p>maximum draws:<p>
-  <input type = "button" onclick = "taroxiXekanel(1)" value = "One">
-  <input type = "button" onclick = "taroxiXekanel(2)" value = "Two">
-  <input type = "button" onclick = "taroxiXekanel(3)" value = "Three">
-  <input type = "button" onclick = "taroxiXekanel(4)" value = "Four">
-  <input type = "button" onclick = "taroxiXekanel(5)" value = "Five">
-  <input type = "button" onclick = "taroxiXekanel(6)" value = "Six">
-  <input type = "button" onclick = "taroxiXekanel(7)" value = "Seven">
-  <input type = "button" onclick = "taroxiXekanel(8)" value = "Eight">
-  <input type = "button" onclick = "taroxiXekanel(9)" value = "Nine">
-  <input type = "button" onclick = "taroxiXekanel(10)" value = "Ten">
-  <input type = "button" onclick = "taroxiXekanel(11)" value = "Eleven">
-  <input type = "button" onclick = "taroxiXekanel(12)" value = "Twelve">
+  <p>Overtone piano keys: 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, -, =, [delete]. Default is volume 1, but q through [ set a volume. [shift] is the sustain pedal. Overtone tablature works like this: 0h2v1l1-1h3v1l1-2h4v1l1 indicates playing the first harmonic after 0 seconds, playing the third harmonic after one second, then playing the fourth harmonic after 2 seconds. All of them at volume 1, all of them length of 1 second. <p>
+  <br>
+  <input type = "button" onclick = "record()" value = "record overtone tab">
+  <input type = "button" onclick = "readout()" value = "display recorded overtone tab">
+ </div>
+
+ <div id = taroxi>
+  <xek-title><p>Venusian Oracle Cards</p>
+  <label for="question">Question:</label>
+  <br>
+  <input id="question" name="question" type="text">
+  <input type = "button" onclick = "taroxiXekanel(13)" value = "Draw">
+    </select>
+  </xek-title>
  </div>
 
 </html>
