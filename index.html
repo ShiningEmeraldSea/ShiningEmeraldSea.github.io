@@ -137,13 +137,61 @@
     </div>
 
     <div id="taroxi">
-        <xek-title><p>Venusian Oracle Cards</p>
-        <label for="question">Question:</label>
-        <br>
-        <input id="question" name="question" type="text">
-        <input type="button" onclick="taroxiXekanel(13)" value="Draw">
-        </select>
+        <xek-title>
+            <p>Venusian Oracle Cards</p>
+            <label for="question">Question:</label>
+            <br>
+            <input id="question" name="question" type="text">
+            <input type="button" id="generateButton" value="Draw">
+            <ul id="outputList"></ul>
         </xek-title>
+    
+        <script>
+            // Function to generate an array of random numbers without duplicates
+            function generateRandomResponses() {
+                const textInput = document.getElementById("question").value;
+                const timestamp = Math.floor(Date.now() / 1000); // Current Unix timestamp in seconds
+                const seed = textInput + timestamp;
+    
+                // Generate a random number between 1 and 4
+                const numRandomResponses = Math.floor(Math.random() * 4) + 1;
+    
+                // Create an array of all possible responses
+                const responses = [
+                    "The Sun", "The Serpent", "The Lovers", "The Earth", "The Waters",
+                    "The Fires", "The Hierophant", "The Hermit", "The High Priestess", "The Sword",
+                    "The Mark", "The Work", "The Eclipse"
+                ];
+    
+                // Shuffle the array of responses
+                const shuffledResponses = shuffleArray(responses);
+    
+                // Take the first numRandomResponses elements from the shuffled array
+                const randomResponses = shuffledResponses.slice(0, numRandomResponses);
+    
+                // Display the generated oracle responses
+                const outputList = document.getElementById("outputList");
+                outputList.innerHTML = "";
+                randomResponses.forEach(response => {
+                    const listItem = document.createElement("li");
+                    listItem.textContent = response;
+                    outputList.appendChild(listItem);
+                });
+            }
+    
+            // Shuffle an array using the Fisher-Yates algorithm
+            function shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            }
+    
+            // Attach the generateRandomResponses function to the button click event
+            const generateButton = document.getElementById("generateButton");
+            generateButton.addEventListener("click", generateRandomResponses);
+        </script>
     </div>
 
 </body>
